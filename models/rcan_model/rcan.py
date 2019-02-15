@@ -104,8 +104,6 @@ class RCAN(nn.Module):
         self.tail = nn.Sequential(*modules_tail)
 
     def forward(self, x):
-        batch,channel,width,height = list(x.shape)
-        x.resize_(batch,channel,int(width/2),int(height/2))
 
         x = self.sub_mean(x)
         x = self.head(x)

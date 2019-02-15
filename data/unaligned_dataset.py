@@ -22,6 +22,7 @@ class UnalignedDataset(BaseDataset):
         Parameters:
             opt (Option class) -- stores all the experiment flags; needs to be a subclass of BaseOptions
         """
+        self.opt = opt
         BaseDataset.__init__(self, opt)
         self.dir_A = os.path.join(opt.dataroot, opt.phase + 'A')  # create a path '/path/to/data/trainA'
         self.dir_B = os.path.join(opt.dataroot, opt.phase + 'B')  # create a path '/path/to/data/trainB'
@@ -56,6 +57,13 @@ class UnalignedDataset(BaseDataset):
         B_path = self.B_paths[index_B]
         A_img = Image.open(A_path).convert('RGB')
         B_img = Image.open(B_path).convert('RGB')
+
+        if self.opt.netG == 'rcan':
+            half = 0.5
+            A_img = A_img.resize([int(half * s) for s in A_img.size])
+            B_img = B_img.resize([int(half * s) for s in B_img.size])
+
+
         # apply image transformation
         A = self.transform_A(A_img)
         B = self.transform_B(B_img)
