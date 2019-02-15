@@ -104,6 +104,7 @@ class RCAN(nn.Module):
         self.tail = nn.Sequential(*modules_tail)
 
     def forward(self, x):
+        # assert( x.shape[-1] == 256)
         x = self.sub_mean(x)
         x = self.head(x)
 

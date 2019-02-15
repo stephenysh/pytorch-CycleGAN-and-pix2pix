@@ -400,7 +400,7 @@ class RcanGenerator(nn.Module):
             'n_resblocks'   : 20,
             'n_feats'       : 64,
             'reduction'     : 16,
-            'scale'         : [4],
+            'scale'         : [1],
             'rgb_range'     : 255,
             'n_colors'      : 3,
             'res_scale'     : 1,
