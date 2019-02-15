@@ -155,7 +155,7 @@ def define_G(input_nc, output_nc, ngf, netG, norm='batch', use_dropout=False, in
         raise NotImplementedError('Generator model name [%s] is not recognized' % netG)
 
     print('=========================')
-    # summary(net, (3, 256, 256))
+    summary(net, (3, 256, 256))
     print('=========================')
 
     return init_net(net, init_type, init_gain, gpu_ids)
