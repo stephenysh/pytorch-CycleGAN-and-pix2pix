@@ -4,7 +4,9 @@ from torch.nn import init
 import functools
 from torch.optim import lr_scheduler
 
-
+from torchsummary import summary
+from models.rcan_model.rcan import RCAN
+from importlib import import_module
 ###############################################################################
 # Helper Functions
 ###############################################################################
@@ -147,8 +149,15 @@ def define_G(input_nc, output_nc, ngf, netG, norm='batch', use_dropout=False, in
         net = UnetGenerator(input_nc, output_nc, 7, ngf, norm_layer=norm_layer, use_dropout=use_dropout)
     elif netG == 'unet_256':
         net = UnetGenerator(input_nc, output_nc, 8, ngf, norm_layer=norm_layer, use_dropout=use_dropout)
+    elif netG == 'rcan':
+        net = RcanGenerator(input_nc, output_nc, ngf, norm_layer=norm_layer, use_dropout=use_dropout, n_blocks=9)
     else:
         raise NotImplementedError('Generator model name [%s] is not recognized' % netG)
+
+    print('=========================')
+    # summary(net, (3, 256, 256))
+    print('=========================')
+
     return init_net(net, init_type, init_gain, gpu_ids)
 
 
@@ -366,6 +375,49 @@ class ResnetGenerator(nn.Module):
         """Standard forward"""
         return self.model(input)
 
+
+class RcanGenerator(nn.Module):
+    """Resnet-based generator that consists of Resnet blocks between a few downsampling/upsampling operations.
+
+    We adapt Torch code and idea from Justin Johnson's neural style transfer project(https://github.com/jcjohnson/fast-neural-style)
+    """
+
+    def __init__(self, input_nc, output_nc, ngf=64, norm_layer=nn.BatchNorm2d, use_dropout=False, n_blocks=6, padding_type='reflect'):
+        """Construct a Resnet-based generator
+
+        Parameters:
+            input_nc (int)      -- the number of channels in input images
+            output_nc (int)     -- the number of channels in output images
+            ngf (int)           -- the number of filters in the last conv layer
+            norm_layer          -- normalization layer
+            use_dropout (bool)  -- if use dropout layers
+            n_blocks (int)      -- the number of ResNet blocks
+            padding_type (str)  -- the name of padding layer in conv layers: reflect | replicate | zero
+        """
+        super(RcanGenerator, self).__init__()
+        rcan_args = {
+            'n_resgroups'   : 10,
+            'n_resblocks'   : 20,
+            'n_feats'       : 64,
+            'reduction'     : 16,
+            'scale'         : [4],
+            'rgb_range'     : 255,
+            'n_colors'      : 3,
+            'res_scale'     : 1,
+            'n_colors'      : 3,
+        }
+        # module = import_module('model.')
+        # self.model = module.make_model(args).to(self.device)
+
+
+        self.model = make_model(rcan_args)
+
+    def forward(self, input):
+        """Standard forward"""
+        return self.model(input)
+
+def make_model(args):
+    return RCAN(args)
 
 class ResnetBlock(nn.Module):
     """Define a Resnet block"""
