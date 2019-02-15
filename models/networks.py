@@ -417,7 +417,7 @@ class RcanGenerator(nn.Module):
         return self.model(input)
 
 def make_model(args):
-    return RCAN(args)
+    return RCAN(args).to(torch.device('cuda'))
 
 class ResnetBlock(nn.Module):
     """Define a Resnet block"""
