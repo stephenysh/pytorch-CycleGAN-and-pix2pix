@@ -94,7 +94,7 @@ class RCAN(nn.Module):
 
         # define tail module
         modules_tail = [
-            common.Upsampler(conv, scale, n_feats, act=False),
+            # common.Upsampler(conv, scale, n_feats, act=False),
             conv(n_feats, args['n_colors'], kernel_size)]
 
         self.add_mean = common.MeanShift(args['rgb_range'], rgb_mean, rgb_std, 1)
@@ -104,7 +104,9 @@ class RCAN(nn.Module):
         self.tail = nn.Sequential(*modules_tail)
 
     def forward(self, x):
-        # assert( x.shape[-1] == 256)
+        batch,channel,width,height = list(x.shape)
+        x.resize_(batch,channel,int(width/2),int(height/2))
+
         x = self.sub_mean(x)
         x = self.head(x)
 
