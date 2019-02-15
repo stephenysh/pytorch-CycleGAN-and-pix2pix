@@ -396,8 +396,8 @@ class RcanGenerator(nn.Module):
         """
         super(RcanGenerator, self).__init__()
         rcan_args = {
-            'n_resgroups'   : 10,
-            'n_resblocks'   : 20,
+            'n_resgroups'   : 5,
+            'n_resblocks'   : 10,
             'n_feats'       : 64,
             'reduction'     : 16,
             'scale'         : [1],
