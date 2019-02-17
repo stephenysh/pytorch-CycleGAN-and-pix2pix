@@ -58,10 +58,10 @@ class UnalignedDataset(BaseDataset):
         A_img = Image.open(A_path).convert('RGB')
         B_img = Image.open(B_path).convert('RGB')
 
-        if self.opt.netG == 'rcan':
-            half = 0.25
-            A_img = A_img.resize([int(half * s) for s in A_img.size])
-            B_img = B_img.resize([int(half * s) for s in B_img.size])
+        # if self.opt.netG == 'rcan':
+        #     half = 0.25
+        #     A_img = A_img.resize([int(half * s) for s in A_img.size])
+        #     B_img = B_img.resize([int(half * s) for s in B_img.size])
 
 
         # apply image transformation
