@@ -1,0 +1,629 @@
+pydev debugger: process 41334 is connecting
+
+----------------- Options ---------------
+               batch_size: 1                             
+                    beta1: 0.5                           
+          checkpoints_dir: ./checkpoints                 
+           continue_train: False                         
+                crop_size: 256                           
+                 dataroot: /raid1/stephen/data/SRdata    	[default: None]
+             dataset_mode: unaligned                     
+                direction: AtoB                          
+              display_env: main                          
+             display_freq: 400                           
+               display_id: 1                             
+            display_ncols: 4                             
+             display_port: 8097                          
+           display_server: http://localhost              
+          display_winsize: 256                           
+                    epoch: latest                        
+              epoch_count: 1                             
+                 gan_mode: lsgan                         
+                  gpu_ids: 0,1,2,3                       
+                init_gain: 0.02                          
+                init_type: normal                        
+                 input_nc: 3                             
+                  isTrain: True                          	[default: None]
+                 lambda_A: 10.0                          
+                 lambda_B: 10.0                          
+          lambda_identity: 0.5                           
+                load_iter: 0                             	[default: 0]
+                load_size: 286                           
+                       lr: 0.0002                        
+           lr_decay_iters: 50                            
+                lr_policy: linear                        
+         max_dataset_size: inf                           
+                    model: cycle_gan                     
+               n_layers_D: 3                             
+                     name: cyclegan_test                 	[default: experiment_name]
+                      ndf: 64                            
+                     netD: basic                         
+                     netG: rcan                          	[default: resnet_9blocks]
+                      ngf: 64                            
+                    niter: 100                           
+              niter_decay: 100                           
+               no_dropout: True                          
+                  no_flip: False                         
+                  no_html: False                         
+                     norm: instance                      
+              num_threads: 4                             
+                output_nc: 3                             
+                    phase: train                         
+                pool_size: 50                            
+               preprocess: resize_and_crop               
+               print_freq: 100                           
+             save_by_iter: False                         
+          save_epoch_freq: 5                             
+         save_latest_freq: 5000                          
+           serial_batches: False                         
+                   suffix:                               
+         update_html_freq: 1000                          
+                  verbose: False                         
+----------------- End -------------------
+dataset [UnalignedDataset] was created
+The number of training images = 19672
+=========================
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+         MeanShift-1          [-1, 3, 256, 256]              12
+            Conv2d-2         [-1, 64, 256, 256]           1,792
+            Conv2d-3         [-1, 64, 256, 256]          36,928
+              ReLU-4         [-1, 64, 256, 256]               0
+            Conv2d-5         [-1, 64, 256, 256]          36,928
+ AdaptiveAvgPool2d-6             [-1, 64, 1, 1]               0
+            Conv2d-7              [-1, 4, 1, 1]             260
+              ReLU-8              [-1, 4, 1, 1]               0
+            Conv2d-9             [-1, 64, 1, 1]             320
+          Sigmoid-10             [-1, 64, 1, 1]               0
+          CALayer-11         [-1, 64, 256, 256]               0
+             RCAB-12         [-1, 64, 256, 256]               0
+           Conv2d-13         [-1, 64, 256, 256]          36,928
+             ReLU-14         [-1, 64, 256, 256]               0
+           Conv2d-15         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-16             [-1, 64, 1, 1]               0
+           Conv2d-17              [-1, 4, 1, 1]             260
+             ReLU-18              [-1, 4, 1, 1]               0
+           Conv2d-19             [-1, 64, 1, 1]             320
+          Sigmoid-20             [-1, 64, 1, 1]               0
+          CALayer-21         [-1, 64, 256, 256]               0
+             RCAB-22         [-1, 64, 256, 256]               0
+           Conv2d-23         [-1, 64, 256, 256]          36,928
+             ReLU-24         [-1, 64, 256, 256]               0
+           Conv2d-25         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-26             [-1, 64, 1, 1]               0
+           Conv2d-27              [-1, 4, 1, 1]             260
+             ReLU-28              [-1, 4, 1, 1]               0
+           Conv2d-29             [-1, 64, 1, 1]             320
+          Sigmoid-30             [-1, 64, 1, 1]               0
+          CALayer-31         [-1, 64, 256, 256]               0
+             RCAB-32         [-1, 64, 256, 256]               0
+           Conv2d-33         [-1, 64, 256, 256]          36,928
+             ReLU-34         [-1, 64, 256, 256]               0
+           Conv2d-35         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-36             [-1, 64, 1, 1]               0
+           Conv2d-37              [-1, 4, 1, 1]             260
+             ReLU-38              [-1, 4, 1, 1]               0
+           Conv2d-39             [-1, 64, 1, 1]             320
+          Sigmoid-40             [-1, 64, 1, 1]               0
+          CALayer-41         [-1, 64, 256, 256]               0
+             RCAB-42         [-1, 64, 256, 256]               0
+           Conv2d-43         [-1, 64, 256, 256]          36,928
+             ReLU-44         [-1, 64, 256, 256]               0
+           Conv2d-45         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-46             [-1, 64, 1, 1]               0
+           Conv2d-47              [-1, 4, 1, 1]             260
+             ReLU-48              [-1, 4, 1, 1]               0
+           Conv2d-49             [-1, 64, 1, 1]             320
+          Sigmoid-50             [-1, 64, 1, 1]               0
+          CALayer-51         [-1, 64, 256, 256]               0
+             RCAB-52         [-1, 64, 256, 256]               0
+           Conv2d-53         [-1, 64, 256, 256]          36,928
+             ReLU-54         [-1, 64, 256, 256]               0
+           Conv2d-55         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-56             [-1, 64, 1, 1]               0
+           Conv2d-57              [-1, 4, 1, 1]             260
+             ReLU-58              [-1, 4, 1, 1]               0
+           Conv2d-59             [-1, 64, 1, 1]             320
+          Sigmoid-60             [-1, 64, 1, 1]               0
+          CALayer-61         [-1, 64, 256, 256]               0
+             RCAB-62         [-1, 64, 256, 256]               0
+           Conv2d-63         [-1, 64, 256, 256]          36,928
+             ReLU-64         [-1, 64, 256, 256]               0
+           Conv2d-65         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-66             [-1, 64, 1, 1]               0
+           Conv2d-67              [-1, 4, 1, 1]             260
+             ReLU-68              [-1, 4, 1, 1]               0
+           Conv2d-69             [-1, 64, 1, 1]             320
+          Sigmoid-70             [-1, 64, 1, 1]               0
+          CALayer-71         [-1, 64, 256, 256]               0
+             RCAB-72         [-1, 64, 256, 256]               0
+           Conv2d-73         [-1, 64, 256, 256]          36,928
+             ReLU-74         [-1, 64, 256, 256]               0
+           Conv2d-75         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-76             [-1, 64, 1, 1]               0
+           Conv2d-77              [-1, 4, 1, 1]             260
+             ReLU-78              [-1, 4, 1, 1]               0
+           Conv2d-79             [-1, 64, 1, 1]             320
+          Sigmoid-80             [-1, 64, 1, 1]               0
+          CALayer-81         [-1, 64, 256, 256]               0
+             RCAB-82         [-1, 64, 256, 256]               0
+           Conv2d-83         [-1, 64, 256, 256]          36,928
+             ReLU-84         [-1, 64, 256, 256]               0
+           Conv2d-85         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-86             [-1, 64, 1, 1]               0
+           Conv2d-87              [-1, 4, 1, 1]             260
+             ReLU-88              [-1, 4, 1, 1]               0
+           Conv2d-89             [-1, 64, 1, 1]             320
+          Sigmoid-90             [-1, 64, 1, 1]               0
+          CALayer-91         [-1, 64, 256, 256]               0
+             RCAB-92         [-1, 64, 256, 256]               0
+           Conv2d-93         [-1, 64, 256, 256]          36,928
+             ReLU-94         [-1, 64, 256, 256]               0
+           Conv2d-95         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-96             [-1, 64, 1, 1]               0
+           Conv2d-97              [-1, 4, 1, 1]             260
+             ReLU-98              [-1, 4, 1, 1]               0
+           Conv2d-99             [-1, 64, 1, 1]             320
+         Sigmoid-100             [-1, 64, 1, 1]               0
+         CALayer-101         [-1, 64, 256, 256]               0
+            RCAB-102         [-1, 64, 256, 256]               0
+          Conv2d-103         [-1, 64, 256, 256]          36,928
+   ResidualGroup-104         [-1, 64, 256, 256]               0
+          Conv2d-105         [-1, 64, 256, 256]          36,928
+            ReLU-106         [-1, 64, 256, 256]               0
+          Conv2d-107         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-108             [-1, 64, 1, 1]               0
+          Conv2d-109              [-1, 4, 1, 1]             260
+            ReLU-110              [-1, 4, 1, 1]               0
+          Conv2d-111             [-1, 64, 1, 1]             320
+         Sigmoid-112             [-1, 64, 1, 1]               0
+         CALayer-113         [-1, 64, 256, 256]               0
+            RCAB-114         [-1, 64, 256, 256]               0
+          Conv2d-115         [-1, 64, 256, 256]          36,928
+            ReLU-116         [-1, 64, 256, 256]               0
+          Conv2d-117         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-118             [-1, 64, 1, 1]               0
+          Conv2d-119              [-1, 4, 1, 1]             260
+            ReLU-120              [-1, 4, 1, 1]               0
+          Conv2d-121             [-1, 64, 1, 1]             320
+         Sigmoid-122             [-1, 64, 1, 1]               0
+         CALayer-123         [-1, 64, 256, 256]               0
+            RCAB-124         [-1, 64, 256, 256]               0
+          Conv2d-125         [-1, 64, 256, 256]          36,928
+            ReLU-126         [-1, 64, 256, 256]               0
+          Conv2d-127         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-128             [-1, 64, 1, 1]               0
+          Conv2d-129              [-1, 4, 1, 1]             260
+            ReLU-130              [-1, 4, 1, 1]               0
+          Conv2d-131             [-1, 64, 1, 1]             320
+         Sigmoid-132             [-1, 64, 1, 1]               0
+         CALayer-133         [-1, 64, 256, 256]               0
+            RCAB-134         [-1, 64, 256, 256]               0
+          Conv2d-135         [-1, 64, 256, 256]          36,928
+            ReLU-136         [-1, 64, 256, 256]               0
+          Conv2d-137         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-138             [-1, 64, 1, 1]               0
+          Conv2d-139              [-1, 4, 1, 1]             260
+            ReLU-140              [-1, 4, 1, 1]               0
+          Conv2d-141             [-1, 64, 1, 1]             320
+         Sigmoid-142             [-1, 64, 1, 1]               0
+         CALayer-143         [-1, 64, 256, 256]               0
+            RCAB-144         [-1, 64, 256, 256]               0
+          Conv2d-145         [-1, 64, 256, 256]          36,928
+            ReLU-146         [-1, 64, 256, 256]               0
+          Conv2d-147         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-148             [-1, 64, 1, 1]               0
+          Conv2d-149              [-1, 4, 1, 1]             260
+            ReLU-150              [-1, 4, 1, 1]               0
+          Conv2d-151             [-1, 64, 1, 1]             320
+         Sigmoid-152             [-1, 64, 1, 1]               0
+         CALayer-153         [-1, 64, 256, 256]               0
+            RCAB-154         [-1, 64, 256, 256]               0
+          Conv2d-155         [-1, 64, 256, 256]          36,928
+            ReLU-156         [-1, 64, 256, 256]               0
+          Conv2d-157         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-158             [-1, 64, 1, 1]               0
+          Conv2d-159              [-1, 4, 1, 1]             260
+            ReLU-160              [-1, 4, 1, 1]               0
+          Conv2d-161             [-1, 64, 1, 1]             320
+         Sigmoid-162             [-1, 64, 1, 1]               0
+         CALayer-163         [-1, 64, 256, 256]               0
+            RCAB-164         [-1, 64, 256, 256]               0
+          Conv2d-165         [-1, 64, 256, 256]          36,928
+            ReLU-166         [-1, 64, 256, 256]               0
+          Conv2d-167         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-168             [-1, 64, 1, 1]               0
+          Conv2d-169              [-1, 4, 1, 1]             260
+            ReLU-170              [-1, 4, 1, 1]               0
+          Conv2d-171             [-1, 64, 1, 1]             320
+         Sigmoid-172             [-1, 64, 1, 1]               0
+         CALayer-173         [-1, 64, 256, 256]               0
+            RCAB-174         [-1, 64, 256, 256]               0
+          Conv2d-175         [-1, 64, 256, 256]          36,928
+            ReLU-176         [-1, 64, 256, 256]               0
+          Conv2d-177         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-178             [-1, 64, 1, 1]               0
+          Conv2d-179              [-1, 4, 1, 1]             260
+            ReLU-180              [-1, 4, 1, 1]               0
+          Conv2d-181             [-1, 64, 1, 1]             320
+         Sigmoid-182             [-1, 64, 1, 1]               0
+         CALayer-183         [-1, 64, 256, 256]               0
+            RCAB-184         [-1, 64, 256, 256]               0
+          Conv2d-185         [-1, 64, 256, 256]          36,928
+            ReLU-186         [-1, 64, 256, 256]               0
+          Conv2d-187         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-188             [-1, 64, 1, 1]               0
+          Conv2d-189              [-1, 4, 1, 1]             260
+            ReLU-190              [-1, 4, 1, 1]               0
+          Conv2d-191             [-1, 64, 1, 1]             320
+         Sigmoid-192             [-1, 64, 1, 1]               0
+         CALayer-193         [-1, 64, 256, 256]               0
+            RCAB-194         [-1, 64, 256, 256]               0
+          Conv2d-195         [-1, 64, 256, 256]          36,928
+            ReLU-196         [-1, 64, 256, 256]               0
+          Conv2d-197         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-198             [-1, 64, 1, 1]               0
+          Conv2d-199              [-1, 4, 1, 1]             260
+            ReLU-200              [-1, 4, 1, 1]               0
+          Conv2d-201             [-1, 64, 1, 1]             320
+         Sigmoid-202             [-1, 64, 1, 1]               0
+         CALayer-203         [-1, 64, 256, 256]               0
+            RCAB-204         [-1, 64, 256, 256]               0
+          Conv2d-205         [-1, 64, 256, 256]          36,928
+   ResidualGroup-206         [-1, 64, 256, 256]               0
+          Conv2d-207         [-1, 64, 256, 256]          36,928
+            ReLU-208         [-1, 64, 256, 256]               0
+          Conv2d-209         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-210             [-1, 64, 1, 1]               0
+          Conv2d-211              [-1, 4, 1, 1]             260
+            ReLU-212              [-1, 4, 1, 1]               0
+          Conv2d-213             [-1, 64, 1, 1]             320
+         Sigmoid-214             [-1, 64, 1, 1]               0
+         CALayer-215         [-1, 64, 256, 256]               0
+            RCAB-216         [-1, 64, 256, 256]               0
+          Conv2d-217         [-1, 64, 256, 256]          36,928
+            ReLU-218         [-1, 64, 256, 256]               0
+          Conv2d-219         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-220             [-1, 64, 1, 1]               0
+          Conv2d-221              [-1, 4, 1, 1]             260
+            ReLU-222              [-1, 4, 1, 1]               0
+          Conv2d-223             [-1, 64, 1, 1]             320
+         Sigmoid-224             [-1, 64, 1, 1]               0
+         CALayer-225         [-1, 64, 256, 256]               0
+            RCAB-226         [-1, 64, 256, 256]               0
+          Conv2d-227         [-1, 64, 256, 256]          36,928
+            ReLU-228         [-1, 64, 256, 256]               0
+          Conv2d-229         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-230             [-1, 64, 1, 1]               0
+          Conv2d-231              [-1, 4, 1, 1]             260
+            ReLU-232              [-1, 4, 1, 1]               0
+          Conv2d-233             [-1, 64, 1, 1]             320
+         Sigmoid-234             [-1, 64, 1, 1]               0
+         CALayer-235         [-1, 64, 256, 256]               0
+            RCAB-236         [-1, 64, 256, 256]               0
+          Conv2d-237         [-1, 64, 256, 256]          36,928
+            ReLU-238         [-1, 64, 256, 256]               0
+          Conv2d-239         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-240             [-1, 64, 1, 1]               0
+          Conv2d-241              [-1, 4, 1, 1]             260
+            ReLU-242              [-1, 4, 1, 1]               0
+          Conv2d-243             [-1, 64, 1, 1]             320
+         Sigmoid-244             [-1, 64, 1, 1]               0
+         CALayer-245         [-1, 64, 256, 256]               0
+            RCAB-246         [-1, 64, 256, 256]               0
+          Conv2d-247         [-1, 64, 256, 256]          36,928
+            ReLU-248         [-1, 64, 256, 256]               0
+          Conv2d-249         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-250             [-1, 64, 1, 1]               0
+          Conv2d-251              [-1, 4, 1, 1]             260
+            ReLU-252              [-1, 4, 1, 1]               0
+          Conv2d-253             [-1, 64, 1, 1]             320
+         Sigmoid-254             [-1, 64, 1, 1]               0
+         CALayer-255         [-1, 64, 256, 256]               0
+            RCAB-256         [-1, 64, 256, 256]               0
+          Conv2d-257         [-1, 64, 256, 256]          36,928
+            ReLU-258         [-1, 64, 256, 256]               0
+          Conv2d-259         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-260             [-1, 64, 1, 1]               0
+          Conv2d-261              [-1, 4, 1, 1]             260
+            ReLU-262              [-1, 4, 1, 1]               0
+          Conv2d-263             [-1, 64, 1, 1]             320
+         Sigmoid-264             [-1, 64, 1, 1]               0
+         CALayer-265         [-1, 64, 256, 256]               0
+            RCAB-266         [-1, 64, 256, 256]               0
+          Conv2d-267         [-1, 64, 256, 256]          36,928
+            ReLU-268         [-1, 64, 256, 256]               0
+          Conv2d-269         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-270             [-1, 64, 1, 1]               0
+          Conv2d-271              [-1, 4, 1, 1]             260
+            ReLU-272              [-1, 4, 1, 1]               0
+          Conv2d-273             [-1, 64, 1, 1]             320
+         Sigmoid-274             [-1, 64, 1, 1]               0
+         CALayer-275         [-1, 64, 256, 256]               0
+            RCAB-276         [-1, 64, 256, 256]               0
+          Conv2d-277         [-1, 64, 256, 256]          36,928
+            ReLU-278         [-1, 64, 256, 256]               0
+          Conv2d-279         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-280             [-1, 64, 1, 1]               0
+          Conv2d-281              [-1, 4, 1, 1]             260
+            ReLU-282              [-1, 4, 1, 1]               0
+          Conv2d-283             [-1, 64, 1, 1]             320
+         Sigmoid-284             [-1, 64, 1, 1]               0
+         CALayer-285         [-1, 64, 256, 256]               0
+            RCAB-286         [-1, 64, 256, 256]               0
+          Conv2d-287         [-1, 64, 256, 256]          36,928
+            ReLU-288         [-1, 64, 256, 256]               0
+          Conv2d-289         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-290             [-1, 64, 1, 1]               0
+          Conv2d-291              [-1, 4, 1, 1]             260
+            ReLU-292              [-1, 4, 1, 1]               0
+          Conv2d-293             [-1, 64, 1, 1]             320
+         Sigmoid-294             [-1, 64, 1, 1]               0
+         CALayer-295         [-1, 64, 256, 256]               0
+            RCAB-296         [-1, 64, 256, 256]               0
+          Conv2d-297         [-1, 64, 256, 256]          36,928
+            ReLU-298         [-1, 64, 256, 256]               0
+          Conv2d-299         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-300             [-1, 64, 1, 1]               0
+          Conv2d-301              [-1, 4, 1, 1]             260
+            ReLU-302              [-1, 4, 1, 1]               0
+          Conv2d-303             [-1, 64, 1, 1]             320
+         Sigmoid-304             [-1, 64, 1, 1]               0
+         CALayer-305         [-1, 64, 256, 256]               0
+            RCAB-306         [-1, 64, 256, 256]               0
+          Conv2d-307         [-1, 64, 256, 256]          36,928
+   ResidualGroup-308         [-1, 64, 256, 256]               0
+          Conv2d-309         [-1, 64, 256, 256]          36,928
+            ReLU-310         [-1, 64, 256, 256]               0
+          Conv2d-311         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-312             [-1, 64, 1, 1]               0
+          Conv2d-313              [-1, 4, 1, 1]             260
+            ReLU-314              [-1, 4, 1, 1]               0
+          Conv2d-315             [-1, 64, 1, 1]             320
+         Sigmoid-316             [-1, 64, 1, 1]               0
+         CALayer-317         [-1, 64, 256, 256]               0
+            RCAB-318         [-1, 64, 256, 256]               0
+          Conv2d-319         [-1, 64, 256, 256]          36,928
+            ReLU-320         [-1, 64, 256, 256]               0
+          Conv2d-321         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-322             [-1, 64, 1, 1]               0
+          Conv2d-323              [-1, 4, 1, 1]             260
+            ReLU-324              [-1, 4, 1, 1]               0
+          Conv2d-325             [-1, 64, 1, 1]             320
+         Sigmoid-326             [-1, 64, 1, 1]               0
+         CALayer-327         [-1, 64, 256, 256]               0
+            RCAB-328         [-1, 64, 256, 256]               0
+          Conv2d-329         [-1, 64, 256, 256]          36,928
+            ReLU-330         [-1, 64, 256, 256]               0
+          Conv2d-331         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-332             [-1, 64, 1, 1]               0
+          Conv2d-333              [-1, 4, 1, 1]             260
+            ReLU-334              [-1, 4, 1, 1]               0
+          Conv2d-335             [-1, 64, 1, 1]             320
+         Sigmoid-336             [-1, 64, 1, 1]               0
+         CALayer-337         [-1, 64, 256, 256]               0
+            RCAB-338         [-1, 64, 256, 256]               0
+          Conv2d-339         [-1, 64, 256, 256]          36,928
+            ReLU-340         [-1, 64, 256, 256]               0
+          Conv2d-341         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-342             [-1, 64, 1, 1]               0
+          Conv2d-343              [-1, 4, 1, 1]             260
+            ReLU-344              [-1, 4, 1, 1]               0
+          Conv2d-345             [-1, 64, 1, 1]             320
+         Sigmoid-346             [-1, 64, 1, 1]               0
+         CALayer-347         [-1, 64, 256, 256]               0
+            RCAB-348         [-1, 64, 256, 256]               0
+          Conv2d-349         [-1, 64, 256, 256]          36,928
+            ReLU-350         [-1, 64, 256, 256]               0
+          Conv2d-351         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-352             [-1, 64, 1, 1]               0
+          Conv2d-353              [-1, 4, 1, 1]             260
+            ReLU-354              [-1, 4, 1, 1]               0
+          Conv2d-355             [-1, 64, 1, 1]             320
+         Sigmoid-356             [-1, 64, 1, 1]               0
+         CALayer-357         [-1, 64, 256, 256]               0
+            RCAB-358         [-1, 64, 256, 256]               0
+          Conv2d-359         [-1, 64, 256, 256]          36,928
+            ReLU-360         [-1, 64, 256, 256]               0
+          Conv2d-361         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-362             [-1, 64, 1, 1]               0
+          Conv2d-363              [-1, 4, 1, 1]             260
+            ReLU-364              [-1, 4, 1, 1]               0
+          Conv2d-365             [-1, 64, 1, 1]             320
+         Sigmoid-366             [-1, 64, 1, 1]               0
+         CALayer-367         [-1, 64, 256, 256]               0
+            RCAB-368         [-1, 64, 256, 256]               0
+          Conv2d-369         [-1, 64, 256, 256]          36,928
+            ReLU-370         [-1, 64, 256, 256]               0
+          Conv2d-371         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-372             [-1, 64, 1, 1]               0
+          Conv2d-373              [-1, 4, 1, 1]             260
+            ReLU-374              [-1, 4, 1, 1]               0
+          Conv2d-375             [-1, 64, 1, 1]             320
+         Sigmoid-376             [-1, 64, 1, 1]               0
+         CALayer-377         [-1, 64, 256, 256]               0
+            RCAB-378         [-1, 64, 256, 256]               0
+          Conv2d-379         [-1, 64, 256, 256]          36,928
+            ReLU-380         [-1, 64, 256, 256]               0
+          Conv2d-381         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-382             [-1, 64, 1, 1]               0
+          Conv2d-383              [-1, 4, 1, 1]             260
+            ReLU-384              [-1, 4, 1, 1]               0
+          Conv2d-385             [-1, 64, 1, 1]             320
+         Sigmoid-386             [-1, 64, 1, 1]               0
+         CALayer-387         [-1, 64, 256, 256]               0
+            RCAB-388         [-1, 64, 256, 256]               0
+          Conv2d-389         [-1, 64, 256, 256]          36,928
+            ReLU-390         [-1, 64, 256, 256]               0
+          Conv2d-391         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-392             [-1, 64, 1, 1]               0
+          Conv2d-393              [-1, 4, 1, 1]             260
+            ReLU-394              [-1, 4, 1, 1]               0
+          Conv2d-395             [-1, 64, 1, 1]             320
+         Sigmoid-396             [-1, 64, 1, 1]               0
+         CALayer-397         [-1, 64, 256, 256]               0
+            RCAB-398         [-1, 64, 256, 256]               0
+          Conv2d-399         [-1, 64, 256, 256]          36,928
+            ReLU-400         [-1, 64, 256, 256]               0
+          Conv2d-401         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-402             [-1, 64, 1, 1]               0
+          Conv2d-403              [-1, 4, 1, 1]             260
+            ReLU-404              [-1, 4, 1, 1]               0
+          Conv2d-405             [-1, 64, 1, 1]             320
+         Sigmoid-406             [-1, 64, 1, 1]               0
+         CALayer-407         [-1, 64, 256, 256]               0
+            RCAB-408         [-1, 64, 256, 256]               0
+          Conv2d-409         [-1, 64, 256, 256]          36,928
+   ResidualGroup-410         [-1, 64, 256, 256]               0
+          Conv2d-411         [-1, 64, 256, 256]          36,928
+            ReLU-412         [-1, 64, 256, 256]               0
+          Conv2d-413         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-414             [-1, 64, 1, 1]               0
+          Conv2d-415              [-1, 4, 1, 1]             260
+            ReLU-416              [-1, 4, 1, 1]               0
+          Conv2d-417             [-1, 64, 1, 1]             320
+         Sigmoid-418             [-1, 64, 1, 1]               0
+         CALayer-419         [-1, 64, 256, 256]               0
+            RCAB-420         [-1, 64, 256, 256]               0
+          Conv2d-421         [-1, 64, 256, 256]          36,928
+            ReLU-422         [-1, 64, 256, 256]               0
+          Conv2d-423         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-424             [-1, 64, 1, 1]               0
+          Conv2d-425              [-1, 4, 1, 1]             260
+            ReLU-426              [-1, 4, 1, 1]               0
+          Conv2d-427             [-1, 64, 1, 1]             320
+         Sigmoid-428             [-1, 64, 1, 1]               0
+         CALayer-429         [-1, 64, 256, 256]               0
+            RCAB-430         [-1, 64, 256, 256]               0
+          Conv2d-431         [-1, 64, 256, 256]          36,928
+            ReLU-432         [-1, 64, 256, 256]               0
+          Conv2d-433         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-434             [-1, 64, 1, 1]               0
+          Conv2d-435              [-1, 4, 1, 1]             260
+            ReLU-436              [-1, 4, 1, 1]               0
+          Conv2d-437             [-1, 64, 1, 1]             320
+         Sigmoid-438             [-1, 64, 1, 1]               0
+         CALayer-439         [-1, 64, 256, 256]               0
+            RCAB-440         [-1, 64, 256, 256]               0
+          Conv2d-441         [-1, 64, 256, 256]          36,928
+            ReLU-442         [-1, 64, 256, 256]               0
+          Conv2d-443         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-444             [-1, 64, 1, 1]               0
+          Conv2d-445              [-1, 4, 1, 1]             260
+            ReLU-446              [-1, 4, 1, 1]               0
+          Conv2d-447             [-1, 64, 1, 1]             320
+         Sigmoid-448             [-1, 64, 1, 1]               0
+         CALayer-449         [-1, 64, 256, 256]               0
+            RCAB-450         [-1, 64, 256, 256]               0
+          Conv2d-451         [-1, 64, 256, 256]          36,928
+            ReLU-452         [-1, 64, 256, 256]               0
+          Conv2d-453         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-454             [-1, 64, 1, 1]               0
+          Conv2d-455              [-1, 4, 1, 1]             260
+            ReLU-456              [-1, 4, 1, 1]               0
+          Conv2d-457             [-1, 64, 1, 1]             320
+         Sigmoid-458             [-1, 64, 1, 1]               0
+         CALayer-459         [-1, 64, 256, 256]               0
+            RCAB-460         [-1, 64, 256, 256]               0
+          Conv2d-461         [-1, 64, 256, 256]          36,928
+            ReLU-462         [-1, 64, 256, 256]               0
+          Conv2d-463         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-464             [-1, 64, 1, 1]               0
+          Conv2d-465              [-1, 4, 1, 1]             260
+            ReLU-466              [-1, 4, 1, 1]               0
+          Conv2d-467             [-1, 64, 1, 1]             320
+         Sigmoid-468             [-1, 64, 1, 1]               0
+         CALayer-469         [-1, 64, 256, 256]               0
+            RCAB-470         [-1, 64, 256, 256]               0
+          Conv2d-471         [-1, 64, 256, 256]          36,928
+            ReLU-472         [-1, 64, 256, 256]               0
+          Conv2d-473         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-474             [-1, 64, 1, 1]               0
+          Conv2d-475              [-1, 4, 1, 1]             260
+            ReLU-476              [-1, 4, 1, 1]               0
+          Conv2d-477             [-1, 64, 1, 1]             320
+         Sigmoid-478             [-1, 64, 1, 1]               0
+         CALayer-479         [-1, 64, 256, 256]               0
+            RCAB-480         [-1, 64, 256, 256]               0
+          Conv2d-481         [-1, 64, 256, 256]          36,928
+            ReLU-482         [-1, 64, 256, 256]               0
+          Conv2d-483         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-484             [-1, 64, 1, 1]               0
+          Conv2d-485              [-1, 4, 1, 1]             260
+            ReLU-486              [-1, 4, 1, 1]               0
+          Conv2d-487             [-1, 64, 1, 1]             320
+         Sigmoid-488             [-1, 64, 1, 1]               0
+         CALayer-489         [-1, 64, 256, 256]               0
+            RCAB-490         [-1, 64, 256, 256]               0
+          Conv2d-491         [-1, 64, 256, 256]          36,928
+            ReLU-492         [-1, 64, 256, 256]               0
+          Conv2d-493         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-494             [-1, 64, 1, 1]               0
+          Conv2d-495              [-1, 4, 1, 1]             260
+            ReLU-496              [-1, 4, 1, 1]               0
+          Conv2d-497             [-1, 64, 1, 1]             320
+         Sigmoid-498             [-1, 64, 1, 1]               0
+         CALayer-499         [-1, 64, 256, 256]               0
+            RCAB-500         [-1, 64, 256, 256]               0
+          Conv2d-501         [-1, 64, 256, 256]          36,928
+            ReLU-502         [-1, 64, 256, 256]               0
+          Conv2d-503         [-1, 64, 256, 256]          36,928
+AdaptiveAvgPool2d-504             [-1, 64, 1, 1]               0
+          Conv2d-505              [-1, 4, 1, 1]             260
+            ReLU-506              [-1, 4, 1, 1]               0
+          Conv2d-507             [-1, 64, 1, 1]             320
+         Sigmoid-508             [-1, 64, 1, 1]               0
+         CALayer-509         [-1, 64, 256, 256]               0
+            RCAB-510         [-1, 64, 256, 256]               0
+          Conv2d-511         [-1, 64, 256, 256]          36,928
+   ResidualGroup-512         [-1, 64, 256, 256]               0
+          Conv2d-513         [-1, 64, 256, 256]          36,928
+          Conv2d-514          [-1, 3, 256, 256]           1,731
+       MeanShift-515          [-1, 3, 256, 256]              12
+            RCAN-516          [-1, 3, 256, 256]               0
+================================================================
+Total params: 3,946,915
+Trainable params: 3,946,915
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.75
+Forward/backward pass size (MB): 8390.08
+Params size (MB): 15.06
+Estimated Total Size (MB): 8405.88
+----------------------------------------------------------------
+=========================
+^CTraceback (most recent call last):
+  File "/home/mo/.pycharm_helpers/pydev/_pydevd_bundle/pydevd_frame.py", line 621, in trace_dispatch
+    self.do_wait_suspend(thread, frame, event, arg)
+  File "/home/mo/.pycharm_helpers/pydev/_pydevd_bundle/pydevd_frame.py", line 125, in do_wait_suspend
+    self._args[0].do_wait_suspend(*args, **kwargs)
+  File "/home/mo/.pycharm_helpers/pydev/pydevd.py", line 877, in do_wait_suspend
+    time.sleep(0.01)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/home/mo/.pycharm_helpers/pydev/pydevd.py", line 1741, in <module>
+    main()
+  File "/home/mo/.pycharm_helpers/pydev/pydevd.py", line 1735, in main
+    globals = debugger.run(setup['file'], None, None, is_module)
+  File "/home/mo/.pycharm_helpers/pydev/pydevd.py", line 1135, in run
+    pydev_imports.execfile(file, globals, locals)  # execute the script
+  File "/home/mo/.pycharm_helpers/pydev/_pydev_imps/_pydev_execfile.py", line 18, in execfile
+    exec(compile(contents+"\n", file, 'exec'), glob, loc)
+  File "/raid1/stephen/cyclegan/pytorch-CycleGAN-and-pix2pix/train.py", line 33, in <module>
+    model = create_model(opt)      # create a model given opt.model and other options
+  File "/raid1/stephen/cyclegan/pytorch-CycleGAN-and-pix2pix/models/__init__.py", line 65, in create_model
+    instance = model(opt)
+  File "/raid1/stephen/cyclegan/pytorch-CycleGAN-and-pix2pix/models/cycle_gan_model.py", line 74, in __init__
+    not opt.no_dropout, opt.init_type, opt.init_gain, self.gpu_ids)
+  File "/raid1/stephen/cyclegan/pytorch-CycleGAN-and-pix2pix/models/networks.py", line 161, in define_G
+    return init_net(net, init_type, init_gain, gpu_ids)
+  File "/raid1/stephen/cyclegan/pytorch-CycleGAN-and-pix2pix/models/networks.py", line 161, in define_G
+    return init_net(net, init_type, init_gain, gpu_ids)
+  File "/home/mo/.pycharm_helpers/pydev/_pydevd_bundle/pydevd_frame.py", line 621, in trace_dispatch
+    self.do_wait_suspend(thread, frame, event, arg)
+  File "/home/mo/.pycharm_helpers/pydev/_pydevd_bundle/pydevd_frame.py", line 125, in do_wait_suspend
+    self._args[0].do_wait_suspend(*args, **kwargs)
+  File "/home/mo/.pycharm_helpers/pydev/pydevd.py", line 877, in do_wait_suspend
+    time.sleep(0.01)
+KeyboardInterrupt

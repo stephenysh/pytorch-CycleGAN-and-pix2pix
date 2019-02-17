@@ -114,6 +114,7 @@ class RCAN(nn.Module):
         x = self.tail(res)
         x = self.add_mean(x)
 
+        x = nn.Tanh(x)
         return x 
 
     def load_state_dict(self, state_dict, strict=False):
