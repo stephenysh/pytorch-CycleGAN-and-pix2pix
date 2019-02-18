@@ -77,11 +77,11 @@ class RCAN(nn.Module):
         act = nn.ReLU(True)
         
         # RGB mean for DIV2K
-        # rgb_mean = (0.4488, 0.4371, 0.4040)
-        # rgb_std = (1.0, 1.0, 1.0)
+        rgb_mean = (0.4488, 0.4371, 0.4040)
+        rgb_std = (1.0, 1.0, 1.0)
 
-        rgb_mean = (0.5, 0.5, 0.5)
-        rgb_std = (128., 128., 128.)
+        # rgb_mean = (0.5, 0.5, 0.5)
+        # rgb_std = (127.5, 128., 128.)
 
         self.sub_mean = common.MeanShift(args['rgb_range'], rgb_mean, rgb_std)
         
@@ -109,17 +109,20 @@ class RCAN(nn.Module):
 
     def forward(self, x):
 
-        # x = self.sub_mean(x)
+        x = (x + 1.0) * 127.5
+
+        x = self.sub_mean(x)
         x = self.head(x)
 
         res = self.body(x)
         res += x
 
         x = self.tail(res)
-        # x = self.add_mean(x)
+        x = self.add_mean(x)
 
-        m = nn.Tanh()
-        x = m(x)
+        x = (x / 127.5) - 1.0
+        # m = nn.Tanh()
+        # x = m(x)
         return x 
 
     def load_state_dict(self, state_dict, strict=False):
